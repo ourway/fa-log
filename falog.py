@@ -10,7 +10,7 @@ LOGNAME = '.falog'
 def now():
     '''Get current time in a fancy format'''
     localtime = time.localtime()
-    result = time.strftime("%Y.%m.%d %M:%S", localtime)
+    result = time.strftime("%Y.%m.%d %H:%M:%S", localtime)
     return str(result)
 
 def read():
