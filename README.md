@@ -17,6 +17,7 @@ usage
 falog ok it done
 falog "I am very happy :) it's working"
 ```
+Now, type `falog` to view your log
 
 
 what's in fa.log?

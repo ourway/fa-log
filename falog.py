@@ -4,6 +4,9 @@ import time
 import sys
 import os
 
+LOGNAME = '.falog'
+
+
 def now():
     '''Get current time in a fancy format'''
     localtime = time.localtime()
@@ -16,8 +19,8 @@ def read():
     if data.strip():
         return data.strip()
     else:
-        if os.path.isfile('fa.log'):
-            with open('fa.log', 'r') as log:
+        if os.path.isfile(LOGNAME):
+            with open(LOGNAME, 'r') as log:
                 print log.read()
 
 
@@ -33,7 +36,7 @@ def write():
     '''heck if fa.log file is available and write to it in append mode'''
     data = generate_log()
     if data:
-        with open('fa.log', 'a') as log:
+        with open(LOGNAME, 'a') as log:
             log.write(data)
 
 
