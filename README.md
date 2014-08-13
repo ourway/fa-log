@@ -7,6 +7,8 @@ Simplest logging tool for programmers
 prepare
 =======
 ```
+git clone https://github.com/ourway/fa-log.git
+cd fa-log
 sudo ln -s $PWD/falog.py /usr/local/bin/falog
 sudo chmod +x /usr/local/bin/falog
 ```
