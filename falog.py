@@ -42,7 +42,7 @@ def show():
                 info = ' '.join(l[2:]).strip().capitalize()
                 data = ' {t.blue}{now}{t.normal}  {info}'.format(now=datepart,
                             info=info, t=term)
-                data = re.sub(r'([tT][oO][dD][oO]|[nN][oO][tT][eE])', ## todo, note
+                data = re.sub(r'([tT][oO][dD][oO][\w]?|[nN][oO][tT][eE][\w]?)', ## todo, note
                               r'{t.bold}{t.yellow}\1{t.normal}'.format(t=term),
                               data)
                 data = re.sub(r'([bU][uG][gG][sS]?|[iI][sS][sS][uU][eE][\w]?|[pP][rR][oO][bB][lL][eE][mM][\w]?)', ## bug, error, issue
