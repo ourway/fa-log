@@ -18,6 +18,7 @@ Clean code is much better than Cleaner comments!
 import time
 import sys
 import os
+import re
 from blessings import Terminal
 
 
@@ -31,21 +32,33 @@ def now():
     result = time.strftime("%Y.%m.%d %H:%M:%S", localtime)
     return str(result)
 
+
+def show():
+    if os.path.isfile(LOGNAME):
+        with open(LOGNAME, 'r') as log:
+            for line in log.readlines():
+                l = line.split()
+                datepart = ' '.join(l[:2])
+                info = ' '.join(l[2:]).strip().capitalize()
+                data = ' {t.blue}{now}{t.normal}  {info}'.format(now=datepart,
+                            info=info, t=term)
+                data = re.sub(r'([tT][oO][dD][oO]|[nN][oO][tT][eE])', ## todo, note
+                              r'{t.bold}{t.yellow}\1{t.normal}'.format(t=term),
+                              data)
+                data = re.sub(r'([bU][uG][gG][sS]?|[iI][sS][sS][uU][eE][\w]?|[pP][rR][oO][bB][lL][eE][mM][\w]?)', ## bug, error, issue
+                              r'{t.bold}{t.red}\1{t.normal}'.format(t=term),
+                              data)
+                print data
+
+
 def read():
     '''read user log'''
     data = ' '.join(sys.argv[1:])
     if data.strip():
         return data.strip()
     else:
-        if os.path.isfile(LOGNAME):
-            with open(LOGNAME, 'r') as log:
-                for line in log.readlines():
-                    l = line.split()
-                    datepart = ' '.join(l[:2])
-                    info = ' '.join(l[2:])
-                    final = '{t.blue}{now}{t.normal}  {info}'.format(now=datepart,
-                                info=info, t=term)
-                    print final
+        show()
+
 
 
 def generate_log():
