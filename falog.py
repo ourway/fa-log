@@ -1,9 +1,27 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+_copyright = 'Farsheed Ashouri'
+'''
+   ___              _                   _ 
+  / __\_ _ _ __ ___| |__   ___  ___  __| |
+ / _\/ _` | '__/ __| '_ \ / _ \/ _ \/ _` |
+/ / | (_| | |  \__ \ | | |  __/  __/ (_| |
+\/   \__,_|_|  |___/_| |_|\___|\___|\__,_|
+
+Just remember: Each comment is like an appology! 
+Clean code is much better than Cleaner comments!
+
+'''
+
 
 import time
 import sys
 import os
+from blessings import Terminal
 
+
+term = Terminal()
 LOGNAME = '.falog'
 
 
@@ -21,7 +39,13 @@ def read():
     else:
         if os.path.isfile(LOGNAME):
             with open(LOGNAME, 'r') as log:
-                print log.read()
+                for line in log.readlines():
+                    l = line.split()
+                    datepart = ' '.join(l[:2])
+                    info = ' '.join(l[2:])
+                    final = '{t.blue}{now}{t.normal}  {info}'.format(now=datepart,
+                                info=info, t=term)
+                    print final
 
 
 def generate_log():
