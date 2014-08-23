@@ -39,7 +39,7 @@ def show():
             for line in log.readlines():
                 l = line.split()
                 datepart = ' '.join(l[:2])
-                info = ' '.join(l[2:]).strip().capitalize()
+                info = ' '.join(l[2:]).strip()
                 data = ' {t.blue}{now}{t.normal}  {info}'.format(now=datepart,
                             info=info, t=term)
                 data = re.sub(r'([tT][oO][dD][oO][\w]?|[nN][oO][tT][eE][\w]?)', ## todo, note
