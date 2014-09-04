@@ -45,6 +45,9 @@ def show():
                 data = re.sub(r'([tT][oO][dD][oO][\w]?|[nN][oO][tT][eE][\w]?)', ## todo, note
                               r'{t.bold}{t.yellow}\1{t.normal}'.format(t=term),
                               data)
+                data = re.sub(r'([rR][eE][pP][oO][rR][tT][\w]?|[lL][oO][gG][\w]?)', ## report, log
+                              r'{t.bold}{t.green}\1{t.normal}'.format(t=term),
+                              data)
                 data = re.sub(r'([bU][uG][gG][sS]?|[iI][sS][sS][uU][eE][\w]?|[pP][rR][oO][bB][lL][eE][mM][\w]?)', ## bug, error, issue
                               r'{t.bold}{t.red}\1{t.normal}'.format(t=term),
                               data)
