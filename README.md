@@ -8,6 +8,7 @@ prepare
 =======
 ```
 git clone https://github.com/ourway/fa-log.git
+python2.7 -m pip install blessings
 cd fa-log
 sudo ln -s $PWD/falog.py /usr/local/bin/falog
 sudo chmod +x /usr/local/bin/falog
